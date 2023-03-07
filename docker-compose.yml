@@ -1,0 +1,31 @@
+version: "3"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/app/test1
+      - ./drupal:/app/drupal
+      # - ./nginx/sitio2.conf:/etc/nginx/conf.d/sitio2.conf
+      - ./nginx/sitio2drupal.conf:/etc/nginx/conf.d/sitio2drupal.conf
+
+  aplicacion:
+    build: php
+    volumes:
+      - ./html:/app/test1
+      - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
+      # - ./php/php.ini:/etc/php/8.2/fpm/php.ini
+      - ./drupal:/app/drupal
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123.
+      MYSQL_DATABASE: presta
+      MYSQL_USER: prestauser
+      MYSQL_PASSWORD: prestapw
+    volumes:
+      - basedatos:/var/lib/mysql
+      - ./presta.sql:/docker-entrypoint-initdb.d/presta.sql
+volumes:
+  basedatos:

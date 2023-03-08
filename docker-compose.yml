@@ -7,8 +7,11 @@ services:
     volumes:
       - ./html:/app/test1
       - ./drupal:/app/drupal
+      - ./wordpress:/app/wordpress
       # - ./nginx/sitio2.conf:/etc/nginx/conf.d/sitio2.conf
       - ./nginx/sitio2drupal.conf:/etc/nginx/conf.d/sitio2drupal.conf
+      - ./nginx/sitio2word
+      
 
   aplicacion:
     build: php

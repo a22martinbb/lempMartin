@@ -10,7 +10,7 @@ services:
       - ./wordpress:/app/wordpress
       # - ./nginx/sitio2.conf:/etc/nginx/conf.d/sitio2.conf
       - ./nginx/sitio2drupal.conf:/etc/nginx/conf.d/sitio2drupal.conf
-      - ./nginx/sitio2word
+      - ./nginx/sitio2word.conf:/etc/nginx/conf.d/sitio2word.conf
       
 
   aplicacion:
@@ -20,6 +20,7 @@ services:
       - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
       # - ./php/php.ini:/etc/php/8.2/fpm/php.ini
       - ./drupal:/app/drupal
+      - ./wordpress:/app/wordpress
   db:
     image: mysql
     environment:
